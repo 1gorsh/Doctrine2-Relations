@@ -19,6 +19,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         return $qb->select('p', 't')
             ->from('AppBundle:Post', 'p')
             ->leftJoin('p.tags', 't')
+            ->orderBy('p.publishedAt')
             ->getQuery()
             ->getResult();
     }
@@ -32,6 +33,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->leftJoin('p.tags', 't')
             ->where(':tag MEMBER OF p.tags')
             ->setParameter('tag', $tag)
+            ->orderBy('p.publishedAt')
             ->getQuery()
             ->getResult();
     }

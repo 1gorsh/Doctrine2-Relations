@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllWithPostsCount()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        return $qb->select('t.title', 'COUNT(p.id) as countOfPosts')
+            ->from('AppBundle:Tag', 't')
+            ->innerJoin('t.posts', 'p')
+            ->groupBy('t.id')
+            ->orderBy('t.title')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -11,3 +11,8 @@ services:
         class:     Doctrine\ORM\EntityRepository
         factory:   [@doctrine.orm.entity_manager, getRepository]
         arguments: [AppBundle\Entity\Post]
+
+    app.tag_repository:
+        class:     Doctrine\ORM\EntityRepository
+        factory:   [@doctrine.orm.entity_manager, getRepository]
+        arguments: [AppBundle\Entity\Tag]

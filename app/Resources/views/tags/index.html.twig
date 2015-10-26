@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tags{% endblock %}
+
+{% block body %}
+    <!-- Example row of columns -->
+    <div class="row">
+        {% for tag in tags %}
+            <div class="col-lg-2">
+                <a class="btn btn-xs btn-default" href="{{
+                    path('postsByTag', {'title': tag.title})
+                }}" title="All posts associated for this tag">{{ tag.title }}</a> × {{ tag.countOfPosts }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

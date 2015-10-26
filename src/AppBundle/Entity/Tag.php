@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,21 @@ class Tag
      * @ORM\Column(type="string", length=100)
      */
     protected $title;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection|Post[]
+     *
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
+     */
+    protected $posts;
+
+    /**
+     * Default constructor, initializes collections
+     */
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id
