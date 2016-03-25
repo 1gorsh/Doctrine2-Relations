@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\PostRepository")
  * @ORM\Table(name="post")
  */
 class Post
@@ -40,10 +40,15 @@ class Post
 
     /**
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
-     * @ORM\JoinTable(name="posts_tags",
-     *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
-     *      )
+     * @ORM\JoinTable(
+     *     name="posts_tags",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *     }
+     * )
      **/
     private $tags;
 

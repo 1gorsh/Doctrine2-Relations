@@ -5,22 +5,21 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Tag;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        $posts = $this->get('app.post_repository')->getWithTags();
+        /** @var callable $posts */
+        $posts = $this->get('app.query_posts_with_tags');
 
         return $this->render('default/index.html.twig', [
-            'posts' => $posts
+            'posts' => $posts()
         ]);
     }
 
@@ -32,10 +31,11 @@ class DefaultController extends Controller
      */
     public function byTagAction(Tag $tag)
     {
-        $posts = $this->get('app.post_repository')->getByTag($tag);
+        /** @var callable $posts */
+        $posts = $this->get('app.query_posts_by_tag');
 
         return $this->render('default/index.html.twig', [
-            'posts' => $posts
+            'posts' => $posts($tag)
         ]);
     }
 }

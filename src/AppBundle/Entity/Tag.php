@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\TagRepository")
  * @ORM\Table(name="tag")
  */
 class Tag

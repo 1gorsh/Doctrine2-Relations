@@ -7,12 +7,14 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-    app.post_repository:
-        class:     Doctrine\ORM\EntityRepository
-        factory:   [@doctrine.orm.entity_manager, getRepository]
-        arguments: [AppBundle\Entity\Post]
+    app.query_posts_with_tags:
+        class:    AppBundle\QueryFunction\Post\PostsWithTags
+        autowire: true
 
-    app.tag_repository:
-        class:     Doctrine\ORM\EntityRepository
-        factory:   [@doctrine.orm.entity_manager, getRepository]
-        arguments: [AppBundle\Entity\Tag]
+    app.query_posts_by_tag:
+        class:    AppBundle\QueryFunction\Post\PostsByTag
+        autowire: true
+
+    app.query_tags_with_posts_count:
+        class:    AppBundle\QueryFunction\Tag\TagsWithPostsCount
+        autowire: true
