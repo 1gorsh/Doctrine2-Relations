@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.login }}{% endblock %}
+
+{% block body %}
+    <!-- Example row of columns -->
+    <div class="row">
+        <h2>{{ user.login }}</h2>
+        <div class="col-lg-1">
+            Groups:
+        </div>
+        {% for group in groups %}
+            <div class="col-lg-2">
+                <a class="btn btn-xs btn-default" href="{{
+                    path('group', {'name': group.name})
+                }}" >{{ group.name }}</a>
+            </div>
+        {% else %}
+        {% endfor %}
+    </div>
+{% endblock %}

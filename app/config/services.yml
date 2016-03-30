@@ -18,3 +18,11 @@ services:
     app.query_tags_with_posts_count:
         class:    AppBundle\QueryFunction\Tag\TagsWithPostsCount
         autowire: true
+
+    app.query_user_groups_with_users_count:
+        class:    AppBundle\QueryFunction\UserGroup\GroupsWithUsersCount
+        autowire: true
+
+    app.query_groups_by_user:
+        class:    AppBundle\QueryFunction\UserGroup\GroupsByUser
+        autowire: true

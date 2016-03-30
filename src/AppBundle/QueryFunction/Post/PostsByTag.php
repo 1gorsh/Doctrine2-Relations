@@ -2,7 +2,8 @@
 
 namespace AppBundle\QueryFunction\Post;
 
-use AppBundle\Entity\Tag;
+use AppBundle\Entity\Tag,
+    AppBundle\Entity\Post;
 
 final class PostsByTag
 {
@@ -21,7 +22,7 @@ final class PostsByTag
         $qb = $this->em->createQueryBuilder();
 
         return $qb->select('p', 't')
-            ->from('AppBundle:Post', 'p')
+            ->from(Post::class, 'p')
             ->leftJoin('p.tags', 't')
             ->where(':tag MEMBER OF p.tags')
             ->setParameter('tag', $tag)

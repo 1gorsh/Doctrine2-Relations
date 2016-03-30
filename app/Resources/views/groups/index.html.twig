@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groups{% endblock %}
+
+{% block body %}
+    <!-- Example row of columns -->
+    <div class="row">
+        {% for group in userGroups %}
+            <div class="col-lg-2">
+                <a class="btn btn-xs btn-default" href="{{
+                    path('group', {'name': group.name})
+                }}" >{{ group.name }}</a> × {{ group.countOfUsers }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

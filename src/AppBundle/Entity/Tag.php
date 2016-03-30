@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
+     * @var integer
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -19,6 +20,7 @@ class Tag
     protected $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=100)
      */
     protected $title;
@@ -46,20 +48,6 @@ class Tag
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Tag
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     /**

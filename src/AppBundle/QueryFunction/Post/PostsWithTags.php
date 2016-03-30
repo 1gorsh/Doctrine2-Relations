@@ -2,6 +2,8 @@
 
 namespace AppBundle\QueryFunction\Post;
 
+use AppBundle\Entity\Post;
+
 final class PostsWithTags
 {
     /**
@@ -19,7 +21,7 @@ final class PostsWithTags
         $qb = $this->em->createQueryBuilder();
 
         return $qb->select('p', 't')
-            ->from('AppBundle:Post', 'p')
+            ->from(Post::class, 'p')
             ->leftJoin('p.tags', 't')
             ->orderBy('p.publishedAt')
             ->getQuery()

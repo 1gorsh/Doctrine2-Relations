@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\QueryFunction\Tag;
+namespace AppBundle\QueryFunction\UserGroup;
 
-use AppBundle\Entity\Tag;
+use AppBundle\Entity\UserGroup;
 
-final class TagsWithPostsCount
+final class GroupsWithUsersCount
 {
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
@@ -20,11 +20,11 @@ final class TagsWithPostsCount
     {
         $qb = $this->em->createQueryBuilder();
 
-        return $qb->select('t.title', 'COUNT(p.id) as countOfPosts')
-            ->from(Tag::class, 't')
-            ->leftJoin('t.posts', 'p')
-            ->groupBy('t.id')
-            ->orderBy('t.title')
+        return $qb->select('ug.name', 'COUNT(u.id) as countOfUsers')
+            ->from(UserGroup::class, 'ug')
+            ->leftJoin('ug.users', 'u')
+            ->groupBy('ug.id')
+            ->orderBy('ug.name')
             ->getQuery()
             ->getResult();
     }

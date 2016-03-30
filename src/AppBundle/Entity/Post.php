@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\PostRepository")
@@ -12,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Post
 {
     /**
+     * @var integer
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -19,26 +21,31 @@ class Post
     protected $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=100)
      */
     protected $title;
 
     /**
+     * @var string
      * @ORM\Column(type="text")
      */
     protected $body;
 
     /**
+     * @var integer
      * @ORM\Column(type="smallint")
      */
     protected $views = 0;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
      */
     protected $publishedAt;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
      * @ORM\JoinTable(
      *     name="posts_tags",
@@ -69,20 +76,6 @@ class Post
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Post
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
      * Get title
      *
      * @return string
@@ -90,20 +83,6 @@ class Post
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set body
-     *
-     * @param string $body
-     *
-     * @return Post
-     */
-    public function setBody($body)
-    {
-        $this->body = $body;
-
-        return $this;
     }
 
     /**
@@ -117,20 +96,6 @@ class Post
     }
 
     /**
-     * Set views
-     *
-     * @param integer $views
-     *
-     * @return Post
-     */
-    public function setViews($views)
-    {
-        $this->views = $views;
-
-        return $this;
-    }
-
-    /**
      * Get views
      *
      * @return integer
@@ -138,20 +103,6 @@ class Post
     public function getViews()
     {
         return $this->views;
-    }
-
-    /**
-     * Set publishedAt
-     *
-     * @param \DateTime $publishedAt
-     *
-     * @return Post
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
     }
 
     /**
