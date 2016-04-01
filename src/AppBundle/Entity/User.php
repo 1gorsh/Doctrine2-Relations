@@ -13,8 +13,8 @@ class User
     /**
      * @var integer
      * @ORM\Id
-     * @ORM\Column(type="integer", name="id", nullable=false)
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="guid", name="id", nullable=false)
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     protected $id;
 

@@ -14,9 +14,9 @@ class Post
 {
     /**
      * @var integer
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="guid", name="id", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     protected $id;
 

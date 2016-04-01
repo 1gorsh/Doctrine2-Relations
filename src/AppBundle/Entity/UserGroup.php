@@ -15,8 +15,8 @@ class UserGroup
     /**
      * @var integer
      * @ORM\Id
-     * @ORM\Column(type="integer",name="id", nullable=false)
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="guid", name="id", nullable=false)
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     protected $id;
 
@@ -38,7 +38,7 @@ class UserGroup
     public function __construct($name)
     {
         $this->users = new ArrayCollection();
-        $this->setName($name);
+        $this->name = $name;
     }
 
     /**

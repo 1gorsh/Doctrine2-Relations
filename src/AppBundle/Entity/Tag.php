@@ -13,9 +13,9 @@ class Tag
 {
     /**
      * @var integer
-     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="guid", name="id", nullable=false)
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     protected $id;
 
