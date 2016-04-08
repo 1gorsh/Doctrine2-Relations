@@ -1,1 +1,1 @@
-Just my own experiments with Doctrine2
+Experiments with Doctrine2 relations
