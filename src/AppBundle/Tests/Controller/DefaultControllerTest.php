@@ -6,13 +6,27 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    /**
+     * PHPUnit's data providers allow to execute the same tests repeated times
+     * using a different set of data each time.
+     * See http://symfony.com/doc/current/cookbook/form/unit_testing.html#testing-against-different-sets-of-data.
+     *
+     * @dataProvider getPublicUrls
+     */
+    public function testPublicUrls($url)
     {
-        $client = static::createClient();
+        $client = self::createClient();
+        $client->request('GET', $url);
+        $this->assertTrue(
+            $client->getResponse()->isSuccessful(),
+            sprintf('The %s public URL loads correctly.', $url)
+        );
+    }
 
-        $crawler = $client->request('GET', '/');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Doctrine2 Many-To-Many', $crawler->filter('div.masthead h3')->text());
+    public function getPublicUrls()
+    {
+        return array(
+            array('/')
+        );
     }
 }

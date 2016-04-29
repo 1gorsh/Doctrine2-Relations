@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use \Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\TagRepository")
@@ -33,10 +34,13 @@ class Tag
     protected $posts;
 
     /**
-     * Default constructor, initializes collections
+     * Tag constructor.
+     * @param $title
      */
-    public function __construct()
+    public function __construct($title)
     {
+        $this->id = Uuid::uuid4();
+        $this->title = $title;
         $this->posts = new ArrayCollection();
     }
 
