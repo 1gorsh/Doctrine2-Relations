@@ -26,3 +26,7 @@ services:
     app.query_groups_by_user:
         class:    AppBundle\QueryFunction\UserGroup\GroupsByUser
         autowire: true
+
+    app.query_books_with_authors_count:
+        class:    AppBundle\QueryFunction\Book\BooksWithAuthorsCount
+        autowire: true
